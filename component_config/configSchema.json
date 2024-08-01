@@ -14,7 +14,7 @@
         "default": "filename",
         "description": "File to extract"
        },
-       "FileID": {
+       "File_ID": {
         "type": "string",
         "title": "File ID",
         "default": "0000-0000",
