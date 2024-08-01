@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "title": "writer configuration",
+    "properties": {
+        "BearerToken": {
+        "type": "string",
+        "title": "Bearer Token",
+        "default": "Token",
+        "description": "Bearer Token"
+       },
+       "FileName": {
+        "type": "string",
+        "title": "File to extract",
+        "default": "filename",
+        "description": "File to extract"
+       },
+       "FileID": {
+        "type": "string",
+        "title": "File ID",
+        "default": "0000-0000",
+        "description": "ID for file to extract"
+       }
+      }
+  }
