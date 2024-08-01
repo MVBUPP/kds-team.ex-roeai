@@ -7,8 +7,8 @@ class Component(ComponentBase):
     def run(self):       
         params = self.configuration.parameters
         Token = params['BearerToken']
-        dataset=params['Dataset']
-        url = "https://api.roe-ai.com/v1/datasets/files/{id}/download/".format(id=dataset)
+        fileID=params['File_ID']
+        url = "https://api.roe-ai.com/v1/datasets/files/{id}/download/".format(id=fileID)
         headers = {"Authorization": "Bearer {Token}".format(Token=Token)}
 
         response = requests.request("GET", url, headers=headers)
