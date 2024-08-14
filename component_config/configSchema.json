@@ -19,6 +19,23 @@
         "title": "File ID",
         "default": "0000-0000",
         "description": "ID for file to extract"
-       }
+       },
+       "tables": {
+        "type": "array",
+        "propertyOrder": 10,
+        "description": "Element loaded by an arbitrary sync action.",
+        "items": {
+          "enum": [],
+          "type": "string"
+        },
+        "format": "select",
+        "options": {
+          "async": {
+            "label": "Re-load tables",
+            "action": "showTable"
+          }
+        }
+
       }
   }
+}

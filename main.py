@@ -7,6 +7,29 @@ class Component(ComponentBase):
     def __init__(self):
         super().__init__()
 
+    def showTables(self):
+        params = self.configuration.parameters
+        Token = params['BearerToken']
+        FileName=params['FileName']
+        fileID=params['File_ID']
+        OutFile=("out/tables/{filename}").format(filename=FileName)
+        # url = "https://api.roe-ai.com/v1/datasets/files/{id}/download/".format(id=fileID)
+        # url = "https://api.roe-ai.com/v1/datasets/files/".format(id=fileID)
+        url = "https://api.roe-ai.com/v1/database/query/"
+        payload = {"query": "SHOW TABLES"}
+        # payload = {"query": "Create Table test1()"}
+        headers = {"Authorization": "Bearer {Token}".format(Token=Token)}
+
+        response = requests.request("POST", url, json=payload, headers=headers)
+       
+        print(response.content)
+        
+        # response = requests.request("GET", url, headers=headers)
+        JSON_response=response.json()
+        rows=(JSON_response[0]["result_rows"])
+        return rows
+       
+       
     def run(self):       
         params = self.configuration.parameters
         Token = params['BearerToken']
@@ -18,11 +41,14 @@ class Component(ComponentBase):
         url = "https://api.roe-ai.com/v1/database/query/"
 
         payload = {"query": "SELECT name, file FROM dataset_examples"}
+        # payload = {"query": "SHOW TABLES"}
+        # payload = {"query": "Create Table test1()"}
         headers = {"Authorization": "Bearer {Token}".format(Token=Token)}
 
         response = requests.request("POST", url, json=payload, headers=headers)
        
         print(response.content)
+
         # response = requests.request("GET", url, headers=headers)
         JSON_response=response.json()
         # Save the content into out/files
@@ -54,8 +80,7 @@ class Component(ComponentBase):
             print(f"Failed to download the image. Status code: {response.status_code}")
        
         #api call for each file
-        
-        
+            
 if __name__ == "__main__":
         comp = Component()
         # this triggers the run method by default and is controlled by the configuration.action parameter
