@@ -28,8 +28,9 @@ class Component(ComponentBase):
         # response = requests.request("GET", url, headers=headers)
         JSON_response=response.json()
         rows=(JSON_response[0]["result_rows"])
-        return [SelectElement(value=rows[1][0], label="Value 1 label"),
-                SelectElement(value=rows[2][0], label="Value 2 label")]
+        raise Exception("{rows}".format(rows=rows))
+        # return [SelectElement(value=rows[1][0], label="Value 1 label"),
+        #         SelectElement(value=rows[2][0], label="Value 2 label")]
        
        
        
