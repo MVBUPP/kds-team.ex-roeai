@@ -24,14 +24,12 @@ class Component(ComponentBase):
         headers = {"Authorization": "Bearer {Token}".format(Token=Token)}
 
         response = requests.request("POST", url, json=payload, headers=headers)
-       
-        print(response.content)
         
         # response = requests.request("GET", url, headers=headers)
         JSON_response=response.json()
         rows=(JSON_response[0]["result_rows"])
-        return [SelectElement(value=rows[1], label="Value 1 label"),
-                SelectElement(value=rows[2], label="Value 2 label")]
+        return [SelectElement(value=rows[1][0], label="Value 1 label"),
+                SelectElement(value=rows[2][0], label="Value 2 label")]
        
        
        
@@ -51,8 +49,7 @@ class Component(ComponentBase):
         headers = {"Authorization": "Bearer {Token}".format(Token=Token)}
 
         response = requests.request("POST", url, json=payload, headers=headers)
-       
-        print(response.content)
+    
 
         # response = requests.request("GET", url, headers=headers)
         JSON_response=response.json()
@@ -90,3 +87,4 @@ if __name__ == "__main__":
         comp = Component()
         # this triggers the run method by default and is controlled by the configuration.action parameter
         comp.execute_action()
+        comp.showTable()
