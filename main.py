@@ -16,8 +16,6 @@ class Component(ComponentBase):
         FileName=params['FileName']
         fileID=params['File_ID']
         OutFile=("out/tables/{filename}").format(filename=FileName)
-        # url = "https://api.roe-ai.com/v1/datasets/files/{id}/download/".format(id=fileID)
-        # url = "https://api.roe-ai.com/v1/datasets/files/".format(id=fileID)
         url = "https://api.roe-ai.com/v1/database/query/"
         payload = {"query": "SHOW TABLES"}
         # payload = {"query": "Create Table test1()"}
@@ -28,9 +26,9 @@ class Component(ComponentBase):
         # response = requests.request("GET", url, headers=headers)
         JSON_response=response.json()
         rows=(JSON_response[0]["result_rows"])
-        raise Exception("{rows}".format(rows=rows))
-        # return [SelectElement(value=rows[1][0], label="Value 1 label"),
-        #         SelectElement(value=rows[2][0], label="Value 2 label")]
+        # raise Exception("{rows}".format(rows=rows))
+        return [SelectElement(value=rows[1][0], label="Value 1 label"),
+                SelectElement(value=rows[2][0], label="Value 2 label")]
        
        
        

@@ -1,45 +1,23 @@
 
     {
         "type": "object",
-        "title": "writer configuration",
+        "title": "extractor configuration",
         "properties": {
           "tables": {
-            "type": "array",
+           "type": "array",
             "items": {
-              "enum": [],
               "type": "string"
             },
             "format": "select",
             "options": {
               "async": {
                 "label": "Re-load tables",
-                "action": "showTable"
+                "action": "tables"
               }
             },
             "description": "Element loaded by an arbitrary sync action.",
             "uniqueItems": true,
             "propertyOrder": 10
-          },
-          "validation_button": {
-            "type": "button",
-            "format": "sync-action",
-            "propertyOrder": 10,
-            "options": {
-              "async": {
-                "label": "Validate",
-                "action": "showTable"
-              }}},
-          "File_ID": {
-            "type": "string",
-            "title": "File ID",
-            "default": "0000-0000",
-            "description": "ID for file to extract"
-          },
-          "FileName": {
-            "type": "string",
-            "title": "File to extract",
-            "default": "filename",
-            "description": "File to extract"
           },
           "BearerToken": {
             "type": "string",
